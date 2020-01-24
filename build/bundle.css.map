@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "../../App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n\timport {onMount} from \"svelte\";\n\n\tlet personer = [];\t\n\n\tonMount( async () => {\n\t\tconst response = await fetch(\"https://randomuser.me/api/?results=5000\");\n\t\tconst json = await response.json();\n\t\tpersoner = json.results;\n\t});\n\n</script>\n\n<style>\n\th1, p {\n\t\tmargin: 0;\n\t}\n\n\t.personer {\n\t\tdisplay: grid;\n\t\tgrid-template-columns: repeat( auto-fit, minmax(150px, 1fr) );\n\t\tgap: 0.5rem;\n\t}\n\n\t.personer img {\n\t\twidth: 100%;\n\t}\n</style>\n\n<main>\n\t<h1>Random people</h1>\n\t<section class=\"personer\">\n\t\t{#each personer as person}\n\t\t\t<article>\n\t\t\t\t<img src={person.picture.large} alt={person.name.title}>\n\t\t\t\t<h1>{person.name.title} {person.name.first}</h1>\n\t\t\t\t<p>{person.location.city}</p>\n\t\t\t</article>\n\t\t{:else}\n\t\t\t<p>Loading.....</p>\n\t\t{/each}\n\t</section>\n</main>"
+  ],
+  "names": [],
+  "mappings": "AAcC,gCAAE,CAAE,CAAC,8BAAC,CAAC,AACN,MAAM,CAAE,CAAC,AACV,CAAC,AAED,SAAS,8BAAC,CAAC,AACV,OAAO,CAAE,IAAI,CACb,qBAAqB,CAAE,QAAQ,QAAQ,CAAC,CAAC,OAAO,KAAK,CAAC,CAAC,GAAG,CAAC,EAAE,CAC7D,GAAG,CAAE,MAAM,AACZ,CAAC,AAED,wBAAS,CAAC,GAAG,eAAC,CAAC,AACd,KAAK,CAAE,IAAI,AACZ,CAAC"
+}
